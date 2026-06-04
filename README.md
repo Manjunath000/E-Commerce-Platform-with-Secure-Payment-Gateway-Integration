@@ -1,368 +1,386 @@
-# E-Commerce Platform with Secure Payment Gateway Integration
+# 🛍️ E-Commerce Platform with Secure Payment Gateway Integration
 
-A comprehensive, production-ready e-commerce platform built with Node.js, React, and integrated with secure payment gateways (Stripe and PayPal).
+[![CI/CD Pipeline](https://github.com/Manjunath000/E-Commerce-Platform-with-Secure-Payment-Gateway-Integration/workflows/CI%2FCD%20Pipeline/badge.svg)](https://github.com/Manjunath000/E-Commerce-Platform-with-Secure-Payment-Gateway-Integration/actions)
+[![License](https://img.shields.io/badge/license-ISC-blue.svg)](./LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen)](https://nodejs.org)
+[![Docker](https://img.shields.io/badge/docker-ready-blue)](./docs/DOCKER_DEPLOYMENT.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
 
-## 🚀 Features
+> A modern, full-stack e-commerce platform with secure payment processing, built with React, Node.js, Express, and MySQL. Features Docker containerization, CI/CD pipeline, and production-ready security.
 
-### Core E-Commerce Features
-- **User Authentication** - Secure JWT-based user authentication and authorization
-- **Product Management** - Browse, search, filter, and manage products
-- **Shopping Cart** - Add/remove items and manage cart
-- **Order Management** - Create, track, and manage orders
-- **User Profiles** - Manage user information and order history
+![Hero Banner](https://via.placeholder.com/1200x400/667eea/ffffff?text=E-Commerce+Platform)
 
-### Payment Gateway Integration
-- **Stripe Integration** - Secure credit/debit card payments
-- **PayPal Integration** - PayPal checkout support
-- **Payment Verification** - Real-time payment status verification
-- **Transaction History** - Detailed payment records and receipts
+---
 
-### Security Features
-- **End-to-End Encryption** - AES-256 encryption for sensitive data
-- **JWT Authentication** - Secure token-based authentication
-- **Password Hashing** - Bcrypt.js for secure password storage
-- **HTTPS/TLS** - Secure data transmission
-- **Input Validation** - Comprehensive validation and sanitization
-- **CORS Configuration** - Cross-origin resource sharing protection
-- **Security Headers** - Helmet.js for additional security headers
-- **PCI DSS Compliance** - Payment Card Industry compliance
+## ✨ Features
 
-## 📁 Project Structure
+### 🎨 Frontend
+- ⚡ **React 18** with Vite for lightning-fast development
+- 🎯 **Modern UI/UX** with responsive design and animations
+- 🌈 **Visual Graphics** with gradient backgrounds and animated components
+- 📱 **Mobile-First** responsive design
+- ♿ **Accessible** WCAG compliant components
+- 🌗 **Dark Mode** support via prefers-color-scheme
 
-```
-E-Commerce Platform with Secure Payment Gateway Integration/
-├── backend/                          # Node.js/Express Backend
-│   ├── config/                       # Configuration files
-│   │   ├── database.js              # Database connection
-│   │   ├── paymentGateway.js        # Payment gateway setup
-│   │   └── environment.js           # Environment config
-│   ├── routes/                       # API routes
-│   │   ├── auth.js                  # Authentication routes
-│   │   ├── products.js              # Product routes
-│   │   ├── orders.js                # Order routes
-│   │   └── payments.js              # Payment routes
-│   ├── controllers/                  # Business logic
-│   │   ├── authController.js
-│   │   ├── productController.js
-│   │   ├── orderController.js
-│   │   └── paymentController.js
-│   ├── middleware/                   # Express middleware
-│   │   ├── auth.js                  # Authentication middleware
-│   │   ├── errorHandler.js          # Error handling
-│   │   └── validation.js            # Input validation
-│   ├── models/                       # Data models
-│   ├── utils/                        # Utility functions
-│   │   ├── encryptionUtil.js        # Data encryption
-│   │   └── paymentUtil.js           # Payment utilities
-│   ├── server.js                     # Main server file
-│   ├── package.json                 # Backend dependencies
-│   └── .env.example                 # Environment template
-│
-├── frontend/                         # React Frontend
-│   ├── public/
-│   │   ├── index.html               # Main HTML file
-│   │   └── favicon.ico
-│   ├── src/
-│   │   ├── components/              # React components
-│   │   │   ├── Header.jsx           # Header component
-│   │   │   ├── Footer.jsx           # Footer component
-│   │   │   ├── ProductCard.jsx      # Product card
-│   │   │   ├── Cart.jsx             # Shopping cart
-│   │   │   └── PaymentForm.jsx      # Payment form
-│   │   ├── pages/                   # Page components
-│   │   │   ├── Home.jsx             # Home page
-│   │   │   ├── Products.jsx         # Products listing
-│   │   │   ├── ProductDetail.jsx    # Product details
-│   │   │   ├── Cart.jsx             # Cart page
-│   │   │   ├── Checkout.jsx         # Checkout page
-│   │   │   ├── Payment.jsx          # Payment page
-│   │   │   └── OrderConfirmation.jsx # Confirmation
-│   │   ├── services/                # API services
-│   │   │   ├── api.js               # API client
-│   │   │   ├── authService.js       # Auth API
-│   │   │   ├── productService.js    # Products API
-│   │   │   ├── orderService.js      # Orders API
-│   │   │   └── paymentService.js    # Payments API
-│   │   ├── contexts/                # React contexts
-│   │   │   └── AuthContext.jsx      # Auth context
-│   │   ├── hooks/                   # Custom hooks
-│   │   │   ├── useAuth.js           # Auth hook
-│   │   │   ├── useCart.js           # Cart hook
-│   │   │   └── useFetch.js          # Fetch hook
-│   │   ├── styles/                  # CSS files
-│   │   ├── App.jsx                  # Main App component
-│   │   └── index.js                 # React entry point
-│   ├── package.json                 # Frontend dependencies
-│   ├── vite.config.js               # Vite configuration
-│   └── .env.example                 # Environment template
-│
-├── database/                         # Database Schema
-│   ├── migrations/                   # SQL migrations
-│   │   ├── 001_create_users.sql
-│   │   ├── 002_create_products.sql
-│   │   ├── 003_create_orders.sql
-│   │   └── 004_create_payments.sql
-│   └── seeds/                        # Initial data
-│       └── initialData.sql
-│
-├── docs/                            # Documentation
-│   ├── README.md                    # Project overview
-│   ├── API.md                       # API documentation
-│   ├── PAYMENT_GATEWAY.md           # Payment setup guide
-│   ├── SECURITY.md                  # Security implementation
-│   └── SETUP.md                     # Installation guide
-│
-├── .gitignore                       # Git ignore file
-└── README.md                        # This file
-```
+### 🔧 Backend
+- 🚀 **Node.js & Express** RESTful API
+- 🗄️ **MySQL** database with connection pooling
+- 🔐 **JWT Authentication** with bcrypt password hashing
+- 💳 **Payment Integration** (Stripe & PayPal)
+- 🛡️ **Security** with Helmet.js, CORS, input validation
+- 📝 **Request Logging** and error handling
 
-## 🛠️ Technologies Used
+### 🐳 DevOps
+- 🐳 **Docker** containerization with multi-stage builds
+- 🎼 **Docker Compose** for local development
+- 🔄 **CI/CD Pipeline** with GitHub Actions
+- 🔍 **Security Scanning** with Trivy
+- 📊 **Health Checks** for all services
+- 🔧 **phpMyAdmin** for database management
 
-### Backend
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Database**: MySQL
-- **Authentication**: JWT (JSON Web Tokens)
-- **Password Hashing**: Bcrypt.js
-- **Payment Gateways**: Stripe, PayPal
-- **Security**: Helmet.js, CORS
-- **Validation**: Express-validator
-- **Encryption**: Node.js Crypto
+### 🔒 Security
+- 🔐 Password hashing with bcrypt
+- 🎫 JWT token-based authentication
+- 🔒 AES-256 encryption for sensitive data
+- 🛡️ Security headers with Helmet.js
+- 🚫 CORS protection
+- ✅ Input validation with express-validator
+- 🔄 Prepared statements (SQL injection prevention)
 
-### Frontend
-- **Library**: React 18
-- **Build Tool**: Vite
-- **Routing**: React Router v6
-- **HTTP Client**: Axios
-- **Payment UI**: Stripe.js, React Stripe
-- **Icons**: React Icons
-- **Styling**: CSS3
+---
 
-## 📋 Prerequisites
+## 🚨 Important Security Notice
 
-- **Node.js** (v14 or higher)
-- **npm** or **yarn**
-- **MySQL** (v5.7 or higher)
-- **Git**
+**⚠️ CRITICAL**: This repository recently had a security issue that has been fixed. If you're upgrading from version 1.0.0, please read [SECURITY_WARNING.md](./SECURITY_WARNING.md) immediately.
+
+---
 
 ## 🚀 Quick Start
 
-### 1. Clone the Repository
+### Prerequisites
+- Node.js 18+ ([Download](https://nodejs.org/))
+- Docker & Docker Compose ([Download](https://www.docker.com/))
+- Git ([Download](https://git-scm.com/))
+
+### One-Command Setup
 
 ```bash
-git clone <repository-url>
+# Clone the repository
+git clone https://github.com/Manjunath000/E-Commerce-Platform-with-Secure-Payment-Gateway-Integration.git
 cd "E-Commerce Platform with Secure Payment Gateway Integration"
+
+# Start everything with Docker
+docker-compose up -d
+
+# Wait 30 seconds for services to initialize, then open:
+# 🌐 Frontend: http://localhost:3000
+# 🔧 Backend API: http://localhost:5000
+# 📊 phpMyAdmin: http://localhost:8080
 ```
 
-### 2. Backend Setup
+That's it! 🎉
 
+---
+
+## 📖 Documentation
+
+| Document | Description |
+|----------|-------------|
+| **[QUICK_START.md](./QUICK_START.md)** | Get started in 5 minutes |
+| **[SECURITY_WARNING.md](./SECURITY_WARNING.md)** | 🔴 Critical security information |
+| **[CHANGELOG.md](./CHANGELOG.md)** | Version history and changes |
+| **[PRE_DEPLOYMENT_CHECKLIST.md](./PRE_DEPLOYMENT_CHECKLIST.md)** | Production readiness checklist |
+| **[docs/SETUP.md](./docs/SETUP.md)** | Detailed installation guide |
+| **[docs/DOCKER_DEPLOYMENT.md](./docs/DOCKER_DEPLOYMENT.md)** | Docker deployment guide |
+| **[docs/GITHUB_DEPLOYMENT.md](./docs/GITHUB_DEPLOYMENT.md)** | GitHub & hosting guide |
+| **[docs/API.md](./docs/API.md)** | API endpoints reference |
+| **[docs/SECURITY.md](./docs/SECURITY.md)** | Security best practices |
+| **[docs/PAYMENT_GATEWAY.md](./docs/PAYMENT_GATEWAY.md)** | Payment setup guide |
+
+---
+
+## 🏗️ Project Structure
+
+```
+ecommerce-platform/
+├── backend/                 # Node.js Express API
+│   ├── config/             # Configuration files
+│   │   ├── database.js     # MySQL connection pool
+│   │   └── paymentGateway.js
+│   ├── controllers/        # Route controllers
+│   ├── middleware/         # Custom middleware
+│   ├── models/             # Database models
+│   │   ├── User.js         # ✅ NEW
+│   │   ├── Product.js      # ✅ NEW
+│   │   ├── Order.js        # ✅ NEW
+│   │   └── Payment.js      # ✅ NEW
+│   ├── routes/             # API routes
+│   ├── utils/              # Utility functions
+│   ├── Dockerfile          # ✅ NEW
+│   └── server.js           # Entry point
+├── frontend/               # React application
+│   ├── src/
+│   │   ├── components/     # React components
+│   │   │   ├── Hero.jsx    # ✅ NEW - Animated hero section
+│   │   │   ├── Header.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   └── ...
+│   │   ├── styles/         # CSS files
+│   │   │   ├── global.css  # ✅ NEW - Modern design system
+│   │   │   └── hero.css    # ✅ NEW - Hero animations
+│   │   ├── pages/          # Page components
+│   │   ├── contexts/       # React contexts
+│   │   └── hooks/          # Custom hooks
+│   ├── Dockerfile          # ✅ NEW
+│   ├── nginx.conf          # ✅ NEW
+│   └── package.json
+├── database/               # SQL migrations & seeds
+│   ├── migrations/
+│   │   ├── 001_create_users.sql
+│   │   ├── 002_create_products.sql
+│   │   ├── 003_create_orders.sql
+│   │   ├── 004_create_payments.sql
+│   │   └── 005_create_order_items.sql  # ✅ NEW
+│   └── seeds/
+│       └── initialData.sql
+├── docs/                   # Documentation
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml       # ✅ NEW - CI/CD pipeline
+├── docker-compose.yml      # ✅ NEW - Multi-container setup
+├── .dockerignore           # ✅ NEW
+├── .gitignore
+├── SECURITY_WARNING.md     # ✅ NEW - Security guide
+├── CHANGELOG.md            # ✅ NEW - Version history
+└── README.md               # This file
+```
+
+---
+
+## 💻 Development
+
+### Local Development (without Docker)
+
+#### Backend
 ```bash
 cd backend
 npm install
-
-# Create .env file
-cp .env.example .env
-
-# Start development server
-npm run dev
-# Server runs on http://localhost:5000
+npm run dev  # Starts on port 5000
 ```
 
-### 3. Frontend Setup
-
+#### Frontend
 ```bash
-cd ../frontend
+cd frontend
 npm install
-
-# Create .env file
-cp .env.example .env
-
-# Start development server
-npm run dev
-# App runs on http://localhost:3000
+npm run dev  # Starts on port 3000
 ```
 
-### 4. Database Setup
+#### Database
+Install MySQL locally and run migrations from `database/migrations/`
 
-```bash
-# Create database
-mysql -u root -p
-CREATE DATABASE ecommerce;
-EXIT;
+### Environment Variables
 
-# Run migrations
-mysql -u root -p ecommerce < ../database/migrations/001_create_users.sql
-mysql -u root -p ecommerce < ../database/migrations/002_create_products.sql
-mysql -u root -p ecommerce < ../database/migrations/003_create_orders.sql
-mysql -u root -p ecommerce < ../database/migrations/004_create_payments.sql
-
-# Seed data
-mysql -u root -p ecommerce < ../database/seeds/initialData.sql
-```
-
-## 🔑 Configuration
-
-### Backend (.env)
+Copy `.env.example` to `.env` and configure:
 
 ```env
-# Server
-PORT=5000
-NODE_ENV=development
-
-# Database
-MONGODB_URI=mongodb://localhost:27017/ecommerce
-
-# JWT
-JWT_SECRET=your_super_secret_key_here
-JWT_EXPIRE=7d
-
-# Stripe
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-
-# PayPal
-PAYPAL_MODE=sandbox
-PAYPAL_CLIENT_ID=your_paypal_client_id
-PAYPAL_CLIENT_SECRET=your_paypal_client_secret
+# Backend
+DB_HOST=localhost
+DB_USER=ecommerce
+DB_PASSWORD=ecommerce123
+DB_NAME=ecommerce
+JWT_SECRET=your_super_secret_key_minimum_32_chars
+STRIPE_SECRET_KEY=sk_test_...
+PAYPAL_CLIENT_ID=...
 
 # Frontend
-CLIENT_URL=http://localhost:3000
-
-# Encryption
-ENCRYPTION_KEY=your_32_character_encryption_key
-```
-
-### Frontend (.env)
-
-```env
 VITE_API_URL=http://localhost:5000/api
-VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-VITE_PAYPAL_CLIENT_ID=your_paypal_client_id
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
 ```
 
-## 📚 Documentation
-
-- [API Documentation](./docs/API.md) - Complete API endpoint reference
-- [Payment Gateway Setup](./docs/PAYMENT_GATEWAY.md) - Stripe and PayPal integration
-- [Security Implementation](./docs/SECURITY.md) - Security features and best practices
-- [Setup Guide](./docs/SETUP.md) - Detailed installation and deployment guide
+---
 
 ## 🧪 Testing
 
-### Backend Tests
 ```bash
+# Backend tests
 cd backend
 npm test
-```
 
-### Frontend Tests
-```bash
+# Frontend tests
 cd frontend
 npm test
+
+# E2E tests (coming soon)
+npm run test:e2e
 ```
 
-### Manual Testing
-- Use Stripe test card: `4242 4242 4242 4242`
-- Use PayPal sandbox account
+---
 
-## 🚢 Deployment
+## 🐳 Docker Commands
 
-### Frontend Build
 ```bash
-cd frontend
-npm run build
-# Creates optimized build in `dist/` folder
+# Start all services
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop all services
+docker-compose down
+
+# Rebuild and restart
+docker-compose up --build -d
+
+# Access MySQL
+docker-compose exec mysql mysql -u ecommerce -pecommerce123 ecommerce
+
+# Run migrations
+docker-compose exec -T mysql mysql -u ecommerce -pecommerce123 ecommerce < database/migrations/001_create_users.sql
 ```
 
-### Production Checklist
-- [ ] Set NODE_ENV to 'production'
-- [ ] Enable HTTPS/TLS
-- [ ] Configure all environment variables
-- [ ] Setup database backups
-- [ ] Enable monitoring and logging
-- [ ] Configure payment gateway webhooks
-- [ ] Setup error tracking (Sentry, etc.)
-- [ ] Configure CDN for static assets
-- [ ] Setup SSL certificates
+---
 
-## 🔐 Security Features
+## 🚀 Deployment
 
-- **End-to-End Encryption**: AES-256 encryption for sensitive data
-- **PCI DSS Compliance**: Secure payment processing
-- **JWT Authentication**: Token-based authentication
-- **Input Validation**: Comprehensive validation and sanitization
-- **CORS Protection**: Cross-origin request security
-- **Security Headers**: Helmet.js implementation
-- **Password Hashing**: Bcrypt for secure storage
+### Railway (Recommended - Easiest)
 
-See [SECURITY.md](./docs/SECURITY.md) for detailed security implementation.
+1. Sign up at [railway.app](https://railway.app)
+2. Click "Deploy from GitHub"
+3. Select this repository
+4. Add environment variables
+5. Deploy! 🎉
 
-## 🐛 Troubleshooting
+**Cost**: $5-20/month
 
-### Backend Issues
-- **Port in use**: Change `PORT` in `.env`
-- **Database connection error**: Verify MySQL is running and credentials are correct
-- **Module not found**: Run `npm install` again
+### DigitalOcean
 
-### Frontend Issues
-- **API connection error**: Verify backend is running and `VITE_API_URL` is correct
-- **Module not found**: Delete `node_modules` and `package-lock.json`, then run `npm install`
+```bash
+# Create droplet with Docker
+# SSH into server
+ssh root@your_server_ip
 
-## 📝 API Endpoints
+# Clone and deploy
+git clone [your-repo-url]
+cd ecommerce-platform
+docker-compose up -d
+```
+
+**Cost**: $5+/month
+
+See [docs/DEPLOYMENT_HOSTING.md](./docs/DEPLOYMENT_HOSTING.md) for more options.
+
+---
+
+## 🔧 Configuration
+
+### Payment Gateways
+
+#### Stripe
+1. Sign up at [stripe.com](https://stripe.com)
+2. Get API keys from Dashboard → Developers → API keys
+3. Add to `.env`:
+   ```env
+   STRIPE_SECRET_KEY=sk_test_...
+   STRIPE_PUBLISHABLE_KEY=pk_test_...
+   ```
+
+#### PayPal
+1. Sign up at [developer.paypal.com](https://developer.paypal.com)
+2. Create sandbox app
+3. Get Client ID and Secret
+4. Add to `.env`:
+   ```env
+   PAYPAL_CLIENT_ID=...
+   PAYPAL_CLIENT_SECRET=...
+   ```
+
+---
+
+## 📊 API Endpoints
 
 ### Authentication
-- `POST /api/auth/register` - Register user
+- `POST /api/auth/register` - Register new user
 - `POST /api/auth/login` - Login user
-- `POST /api/auth/logout` - Logout user
+- `GET /api/auth/me` - Get current user
 
 ### Products
-- `GET /api/products` - Get all products
+- `GET /api/products` - List products
 - `GET /api/products/:id` - Get product details
 - `POST /api/products` - Create product (admin)
 - `PUT /api/products/:id` - Update product (admin)
 - `DELETE /api/products/:id` - Delete product (admin)
 
 ### Orders
-- `GET /api/orders` - Get user orders
-- `POST /api/orders` - Create order
+- `GET /api/orders` - List user orders
 - `GET /api/orders/:id` - Get order details
+- `POST /api/orders` - Create order
+- `PUT /api/orders/:id` - Update order status (admin)
 
 ### Payments
-- `POST /api/payments/stripe/create-payment-intent` - Create Stripe payment
-- `POST /api/payments/paypal/create-payment` - Create PayPal payment
-- `POST /api/payments/verify` - Verify payment status
+- `POST /api/payments/stripe` - Process Stripe payment
+- `POST /api/payments/paypal` - Process PayPal payment
+- `GET /api/payments/:id` - Get payment details
 
-See [API.md](./docs/API.md) for complete documentation.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the ISC License - see the LICENSE file for details.
-
-## 👨‍💻 Author
-
-E-Commerce Platform Development Team
-
-## 📞 Support
-
-For support, email support@ecommerce.com or create an issue in the repository.
-
-## 🙏 Acknowledgments
-
-- Stripe for payment processing
-- PayPal for payment services
-- React and Node.js communities
-- All contributors and supporters
+Full API documentation: [docs/API.md](./docs/API.md)
 
 ---
 
-**Last Updated**: June 2026
+## 🤝 Contributing
 
-**Status**: ✅ Ready for Development
+Contributions are welcome! Please read our [Contributing Guide](./CONTRIBUTING.md) first.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 📝 License
+
+This project is licensed under the ISC License - see the [LICENSE](./LICENSE) file for details.
+
+---
+
+## 🙏 Acknowledgments
+
+- Built with [React](https://react.dev/), [Node.js](https://nodejs.org/), [Express](https://expressjs.com/)
+- Payment processing by [Stripe](https://stripe.com/) & [PayPal](https://paypal.com/)
+- Containerization with [Docker](https://docker.com/)
+- CI/CD with [GitHub Actions](https://github.com/features/actions)
+
+---
+
+## 📞 Support
+
+- 📖 **Documentation**: See `/docs` folder
+- 🐛 **Bug Reports**: [Open an issue](https://github.com/Manjunath000/E-Commerce-Platform-with-Secure-Payment-Gateway-Integration/issues)
+- 💬 **Questions**: [GitHub Discussions](https://github.com/Manjunath000/E-Commerce-Platform-with-Secure-Payment-Gateway-Integration/discussions)
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] User profile page
+- [ ] Product reviews
+- [ ] Wishlist
+- [ ] Order tracking
+- [ ] Email notifications
+- [ ] Admin dashboard
+- [ ] Analytics
+- [ ] Multi-language support
+
+---
+
+## ⭐ Star History
+
+If you find this project useful, please consider giving it a star! ⭐
+
+---
+
+**Made with ❤️ by the E-Commerce Platform Team**
+
+**Last Updated**: ${new Date().toISOString().split('T')[0]}
+**Version**: 2.0.0
+**Status**: ✅ Production Ready
